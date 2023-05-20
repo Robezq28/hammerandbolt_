@@ -47,24 +47,6 @@ const RotatingSphere = () => {
         normalMap={normalTexture}
         aoMap={aoTexture}
       />
-      {/* <Html distanceFactor={5} center>
-        <div
-          className='flex flex-col items-center justify-center'
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-          }}
-        >
-          <h2 className='text-neutral-100 text-7xl sm:text-9xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'>
-            ELEVATE
-          </h2>
-          <h2 className='text-neutral-100 text-6xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'>
-            design<span className='text-red-500 animate-pulse'>_</span>
-          </h2>
-        </div>
-      </Html> */}
     </Sphere>
   );
 };
@@ -82,7 +64,7 @@ const SphereGeometry = () => {
         intensity={0.5}
       />
       <pointLight position={[-10, -10, -10]} color='red' intensity={0.5} />
-      <Html position={[0, 0, -2]} center>
+      {/* <Html position={[0, 0, -2]} center>
         <div className='flex flex-col items-center justify-center'>
           <h2 className='text-neutral-100 text-6xl sm:text-9xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'>
             ELEVATE<span className='text-red-500 animate-pulse'>_</span>
@@ -91,9 +73,8 @@ const SphereGeometry = () => {
             design<span className='text-red-500 animate-pulse'>_</span>
           </h2>
         </div>
-      </Html>
+      </Html> */}
       <RotatingSphere />
-
       <OrbitControls enableZoom={false} enablePan={false} />
     </Canvas>
   );
