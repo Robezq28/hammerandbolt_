@@ -19,9 +19,12 @@ export default function NavBar() {
       {/* Mobile Menu */}{" "}
       <div className='flex justify-start items-center sm:hidden'>
         <div className='flex items-center justify-between w-full py-4 pr-8'>
-          <h1 className='text-neutral-100 text-3xl sm:text-6xl font-medium'>
+          <a
+            href='/'
+            className='text-neutral-100 text-3xl sm:text-6xl font-medium'
+          >
             hammerandbolt<span className='text-red-500 animate-pulse'>_</span>
-          </h1>
+          </a>
           <button
             className='text-white text-xl '
             onClick={() => setIsOpen(true)}
@@ -81,10 +84,13 @@ export default function NavBar() {
         </motion.nav>
       </div>
       {/* Desktop Menu */}
-      <div className='hidden sm:block'>
-        <h1 className='text-neutral-100 text-4xl sm:text-6xl font-medium pt-4'>
+      <div className='hidden sm:block pt-4'>
+        <a
+          href='/'
+          className='text-neutral-100 text-4xl sm:text-6xl font-medium'
+        >
           hammerandbolt<span className='text-red-500 animate-pulse'>_</span>
-        </h1>
+        </a>
         <nav className='flex flex-col sm:flex-col py-4'>
           <a
             href='/'
