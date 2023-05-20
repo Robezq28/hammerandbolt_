@@ -1,66 +1,84 @@
 "use client";
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import { OrbitControls, TorusKnot, Sphere } from "@react-three/drei";
-import { TextureLoader } from "three";
+import { Vector3 } from "three";
 import { useRef } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { useGLTF, SpotLight, useDepthBuffer } from "@react-three/drei";
 
-const RotatingTorusKnot = () => {
-  const torusKnotRef = useRef();
-
-  const albedoTexture = useLoader(
-    TextureLoader,
-    "/images/MetalCorrodedHeavy001_COL_1K_METALNESS.jpg"
-  );
-  const roughnessTexture = useLoader(
-    TextureLoader,
-    "/images/MetalCorrodedHeavy001_ROUGHNESS_1K_METALNESS.jpg"
-  );
-  const metalnessTexture = useLoader(
-    TextureLoader,
-    "/images/MetalCorrodedHeavy001_METALNESS_1K_METALNESS.jpg"
-  );
-  const normalTexture = useLoader(
-    TextureLoader,
-    "/images/MetalCorrodedHeavy001_NRM_1K_METALNESS.jpg"
-  );
-  const aoTexture = useLoader(
-    TextureLoader,
-    "/images/MetalCorrodedHeavy001_DISP_1K_METALNESS.jpg"
-  );
-
-  useFrame(({ clock }) => {
-    torusKnotRef.current.rotation.x = Math.sin(clock.getElapsedTime()) * 0.5;
-    torusKnotRef.current.rotation.y = Math.sin(clock.getElapsedTime()) * 0.5;
-  });
-
+export default function App() {
   return (
-    <TorusKnot
-      ref={torusKnotRef}
-      args={[1, 0.4, 300, 300]}
-      position={[0, 0, 0]}
+    <Canvas
+      shadows
+      dpr={[1, 2]}
+      camera={{ position: [-2, 2, 6], fov: 50, near: 1, far: 20 }}
     >
-      <meshStandardMaterial
-        attach='material'
-        map={albedoTexture}
-        roughnessMap={roughnessTexture}
-        metalnessMap={metalnessTexture}
-        normalMap={normalTexture}
-        aoMap={aoTexture}
-      />
-    </TorusKnot>
-  );
-};
-
-const TorusKnotGeometry = () => {
-  return (
-    <Canvas>
-      <ambientLight intensity={0.5} />
-      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-      <pointLight position={[-10, -10, -10]} />
-      <RotatingTorusKnot />
-      <OrbitControls />
+      <color attach='background' args={["#000000"]} />
+      <fog attach='fog' args={["#000000", 5, 20]} />
+      <ambientLight intensity={0.015} />
+      <Scene />
     </Canvas>
   );
-};
+}
 
-export default TorusKnotGeometry;
+function Scene() {
+  // This is a super cheap depth buffer that only renders once (frames: 1 is optional!), which works well for static scenes
+  // Spots can optionally use that for realism, learn about soft particles here: http://john-chapman-graphics.blogspot.com/2013/01/good-enough-volumetrics-for-spotlights.html
+  const depthBuffer = useDepthBuffer({ frames: 1 });
+  const { nodes, materials } = useGLTF(
+    "https://market-assets.fra1.cdn.digitaloceanspaces.com/market-assets/models/dragon/model.gltf"
+  );
+  return (
+    <>
+      <MovingSpot
+        depthBuffer={depthBuffer}
+        color='#0c8cbf'
+        position={[3, 3, 2]}
+      />
+      <MovingSpot
+        depthBuffer={depthBuffer}
+        color='#b00c3f'
+        position={[1, 3, 0]}
+      />
+      <mesh
+        position={[0, -1.03, 0]}
+        castShadow
+        receiveShadow
+        geometry={nodes.dragon.geometry}
+        material={materials["Default OBJ.001"]}
+        dispose={null}
+      />
+      <mesh receiveShadow position={[0, -1, 0]} rotation-x={-Math.PI / 2}>
+        <planeGeometry args={[50, 50]} />
+        <meshPhongMaterial />
+      </mesh>
+    </>
+  );
+}
+
+function MovingSpot({ vec = new Vector3(), ...props }) {
+  const light = useRef();
+  const viewport = useThree((state) => state.viewport);
+  useFrame((state) => {
+    light.current.target.position.lerp(
+      vec.set(
+        (state.mouse.x * viewport.width) / 2,
+        (state.mouse.y * viewport.height) / 2,
+        0
+      ),
+      0.1
+    );
+    light.current.target.updateMatrixWorld();
+  });
+  return (
+    <SpotLight
+      castShadow
+      ref={light}
+      penumbra={1}
+      distance={6}
+      angle={0.35}
+      attenuation={5}
+      anglePower={4}
+      intensity={2}
+      {...props}
+    />
+  );
+}

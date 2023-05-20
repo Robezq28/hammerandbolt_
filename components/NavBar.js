@@ -18,7 +18,7 @@ export default function NavBar() {
     <div className='fixed top-0 w-full z-50'>
       {/* Mobile Menu */}{" "}
       <div className='flex justify-start items-center sm:hidden'>
-        <div className='flex items-center justify-between w-full py-4 pr-6'>
+        <div className='flex items-center justify-between w-full py-4 pr-8'>
           <h1 className='text-neutral-100 text-3xl sm:text-6xl font-medium'>
             hammerandbolt<span className='text-red-500 animate-pulse'>_</span>
           </h1>

@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <div className=' h-screen'>
         <NavBar />
-        <SphereGeometry />
+        <TorusKnotGeometry />
       </div>
     </>
   );
