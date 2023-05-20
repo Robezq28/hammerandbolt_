@@ -1,6 +1,11 @@
 "use client";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import { OrbitControls, Sphere, PerspectiveCamera } from "@react-three/drei";
+import {
+  OrbitControls,
+  Sphere,
+  PerspectiveCamera,
+  Html,
+} from "@react-three/drei";
 import { TextureLoader } from "three";
 import { useRef } from "react";
 
@@ -42,6 +47,24 @@ const RotatingSphere = () => {
         normalMap={normalTexture}
         aoMap={aoTexture}
       />
+      {/* <Html distanceFactor={5} center>
+        <div
+          className='flex flex-col items-center justify-center'
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          <h2 className='text-neutral-100 text-7xl sm:text-9xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'>
+            ELEVATE
+          </h2>
+          <h2 className='text-neutral-100 text-6xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'>
+            design<span className='text-red-500 animate-pulse'>_</span>
+          </h2>
+        </div>
+      </Html> */}
     </Sphere>
   );
 };
@@ -49,7 +72,7 @@ const RotatingSphere = () => {
 const SphereGeometry = () => {
   return (
     <Canvas>
-      <PerspectiveCamera makeDefault position={[0, 0, 4]} />
+      <PerspectiveCamera makeDefault position={[0, 0, 7]} />
       <ambientLight intensity={0.5} color='yellow' />
       <spotLight
         position={[10, 10, 10]}
@@ -59,7 +82,18 @@ const SphereGeometry = () => {
         intensity={0.5}
       />
       <pointLight position={[-10, -10, -10]} color='red' intensity={0.5} />
+      <Html position={[0, 0, -2]} center>
+        <div className='flex flex-col items-center justify-center'>
+          <h2 className='text-neutral-100 text-6xl sm:text-9xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'>
+            ELEVATE<span className='text-red-500 animate-pulse'>_</span>
+          </h2>
+          <h2 className='text-neutral-100 text-5xl sm:text-8xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'>
+            design<span className='text-red-500 animate-pulse'>_</span>
+          </h2>
+        </div>
+      </Html>
       <RotatingSphere />
+
       <OrbitControls enableZoom={false} enablePan={false} />
     </Canvas>
   );

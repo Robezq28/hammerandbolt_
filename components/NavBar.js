@@ -32,7 +32,7 @@ export default function NavBar() {
   }, [isOpen, menuRef]);
 
   return (
-    <div className='fixed top-0 w-full z-50'>
+    <div className='fixed top-0 w-full ' style={{ zIndex: 10000 }}>
       {/* Mobile Menu */}{" "}
       <div className='flex justify-start items-center sm:hidden'>
         <div className='flex items-center justify-between w-full py-4 pr-8'>
