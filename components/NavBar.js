@@ -34,11 +34,11 @@ export default function NavBar() {
   return (
     <div className='fixed top-0 w-full ' style={{ zIndex: 10000 }}>
       {/* Mobile Menu */}{" "}
-      <div className='flex justify-start items-center sm:hidden'>
+      <div className='flex justify-start items-center lg:hidden'>
         <div className='flex items-center justify-between w-full py-4 pr-8'>
           <a
             href='/'
-            className='text-neutral-100 text-3xl sm:text-6xl font-medium'
+            className='text-neutral-100 text-3xl lg:text-6xl font-medium'
           >
             hammerandbolt<span className='text-red-500 animate-pulse'>_</span>
           </a>
@@ -132,52 +132,70 @@ export default function NavBar() {
         </motion.nav>
       </div>
       {/* Desktop Menu */}
-      <div className='hidden sm:block pt-4'>
+      <div className='hidden lg:block sm:py-4 lg:h-screen'>
         <a
           href='/'
           className='text-neutral-100 text-4xl sm:text-6xl font-medium'
         >
           hammerandbolt<span className='text-red-500 animate-pulse'>_</span>
         </a>
-        <nav className='flex flex-col sm:flex-col py-4'>
-          <a
-            href='/'
-            className='text-neutral-100 text-3xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
-          >
-            about
-            <span className='text-red-500 group-hover:animate-pulse'>_</span>
-          </a>
-          <a
-            href='/'
-            className='text-neutral-100 text-3xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
-          >
-            work
-            <span className='text-red-500 group-hover:animate-pulse'>_</span>
-          </a>
-          <a
-            href='/'
-            className='text-neutral-100 text-3xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
-          >
-            expertise
-            <span className='text-red-500 group-hover:animate-pulse'>_</span>
-          </a>
-          <a
-            href='/'
-            className='text-neutral-100 text-3xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
-          >
-            contact
-            <span className='text-red-500 group-hover:animate-pulse'>_</span>
-          </a>
-          <a
-            href='/'
-            className='text-neutral-100 text-3xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
-          >
-            careers
-            <span className='text-red-500 group-hover:animate-pulse'>_</span>
-          </a>
+        <div className='sm:flex sm:flex-col sm:items-start sm:justify-between sm:py-4'>
+          <nav>
+            <a
+              href='/'
+              className='text-neutral-100 text-3xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
+            >
+              about
+              <span className='text-red-500 group-hover:animate-pulse'>_</span>
+            </a>
+            <a
+              href='/'
+              className='text-neutral-100 text-3xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
+            >
+              work
+              <span className='text-red-500 group-hover:animate-pulse'>_</span>
+            </a>
+            <a
+              href='/'
+              className='text-neutral-100 text-3xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
+            >
+              expertise
+              <span className='text-red-500 group-hover:animate-pulse'>_</span>
+            </a>
+            <a
+              href='/'
+              className='text-neutral-100 text-3xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
+            >
+              contact
+              <span className='text-red-500 group-hover:animate-pulse'>_</span>
+            </a>
+            <a
+              href='/'
+              className='text-neutral-100 text-3xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
+            >
+              careers
+              <span className='text-red-500 group-hover:animate-pulse'>_</span>
+            </a>
 
-          {/* Add the rest of your desktop links here */}
-        </nav>
+            {/* Add the rest of your desktop links here */}
+          </nav>
+          <nav>
+            <a
+              href='/'
+              className='text-neutral-100 text-3xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
+            >
+              linkedin
+              <span className='text-red-500 group-hover:animate-pulse'>_</span>
+            </a>
+            <a
+              href='/'
+              className='text-neutral-100 text-3xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
+            >
+              instagram
+              <span className='text-red-500 group-hover:animate-pulse'>_</span>
+            </a>
+          </nav>
+        </div>
       </div>
     </div>
   );
