@@ -51,7 +51,7 @@ export default function Work() {
                     _
                   </span>
                 </h2>
-                <p className='text-neutral-100 text-1xl md:text-2xl xl:text-3xl font-medium group flex my-4 max-w-full'>
+                <p className='text-neutral-100 text-2xl md:text-3xl xl:text-3xl font-medium group flex my-4 max-w-full'>
                   {item.description}
                   <span className='text-red-500 animate-pulse inline-block'>
                     _
