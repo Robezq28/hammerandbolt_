@@ -53,12 +53,12 @@ const SphereGeometry = () => {
       <ambientLight intensity={0.5} color='yellow' />
       <spotLight
         position={[10, 10, 10]}
-        color='orange'
+        color='green'
         angle={0.15}
         penumbra={1}
         intensity={0.5}
       />
-      <pointLight position={[-10, -10, -10]} color='red' intensity={0.2} />
+      <pointLight position={[-10, -10, -10]} color='red' intensity={0.5} />
       <RotatingSphere />
       <OrbitControls enableZoom={false} enablePan={false} />
     </Canvas>

@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Bars2Icon, XMarkIcon } from "@heroicons/react/24/solid";
+
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -9,10 +10,26 @@ export default function NavBar() {
     setIsOpen(false);
   };
 
+  const menuRef = useRef(null);
+
   const sidebarVariants = {
     open: { x: 0 },
-    closed: { x: "-100%" },
+    closed: { x: "100%" },
   };
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (!menuRef.current.contains(event.target)) {
+        if (!isOpen) return;
+        closeMenu();
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [isOpen, menuRef]);
 
   return (
     <div className='fixed top-0 w-full z-50'>
@@ -33,11 +50,12 @@ export default function NavBar() {
           </button>
         </div>
         <motion.nav
+          ref={menuRef}
           variants={sidebarVariants}
           initial='closed'
           animate={isOpen ? "open" : "closed"}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className='fixed top-0 left-0 h-screen w-full pl-4 bg-black overflow-auto'
+          className='fixed top-0 right-0 h-screen w-3/4 pl-4 bg-black overflow-auto'
         >
           <button
             className='text-neutral-100 pt-4 pb-4 flex ietms-center justify-start'
@@ -47,35 +65,41 @@ export default function NavBar() {
           </button>
           <a
             href='/'
-            className='text-neutral-100 text-2xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
+            className='text-neutral-100 text-2xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'
+          >
+            hammerandbolt<span className='text-red-500 animate-pulse'>_</span>
+          </a>
+          <a
+            href='/'
+            className='text-neutral-100 text-2xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'
           >
             about
             <span className='text-red-500 group-hover:animate-pulse'>_</span>
           </a>
           <a
             href='/'
-            className='text-neutral-100 text-2xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
+            className='text-neutral-100 text-2xl font-medium group flex flex-wrap mb-2 sm:mb-0 sm:mr-4'
           >
             work
             <span className='text-red-500 group-hover:animate-pulse'>_</span>
           </a>
           <a
             href='/'
-            className='text-neutral-100 text-2xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
+            className='text-neutral-100 text-2xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'
           >
             expertise
             <span className='text-red-500 group-hover:animate-pulse'>_</span>
           </a>
           <a
             href='/'
-            className='text-neutral-100 text-2xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
+            className='text-neutral-100 text-2xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'
           >
             contact
             <span className='text-red-500 group-hover:animate-pulse'>_</span>
           </a>
           <a
             href='/'
-            className='text-neutral-100 text-2xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
+            className='text-neutral-100 text-2xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'
           >
             careers
             <span className='text-red-500 group-hover:animate-pulse'>_</span>
@@ -94,35 +118,35 @@ export default function NavBar() {
         <nav className='flex flex-col sm:flex-col py-4'>
           <a
             href='/'
-            className='text-neutral-100 text-2xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
+            className='text-neutral-100 text-3xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
           >
             about
             <span className='text-red-500 group-hover:animate-pulse'>_</span>
           </a>
           <a
             href='/'
-            className='text-neutral-100 text-2xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
+            className='text-neutral-100 text-3xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
           >
             work
             <span className='text-red-500 group-hover:animate-pulse'>_</span>
           </a>
           <a
             href='/'
-            className='text-neutral-100 text-2xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
+            className='text-neutral-100 text-3xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
           >
             expertise
             <span className='text-red-500 group-hover:animate-pulse'>_</span>
           </a>
           <a
             href='/'
-            className='text-neutral-100 text-2xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
+            className='text-neutral-100 text-3xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
           >
             contact
             <span className='text-red-500 group-hover:animate-pulse'>_</span>
           </a>
           <a
             href='/'
-            className='text-neutral-100 text-2xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
+            className='text-neutral-100 text-3xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
           >
             careers
             <span className='text-red-500 group-hover:animate-pulse'>_</span>
