@@ -1,12 +1,8 @@
-// Overlay.js
 import React from "react";
 
-export default function Overlay() {
+export default function Hero() {
   return (
-    <div
-      className='absolute inset-0 flex items-center justify-center'
-      style={{ zIndex: 5000 }}
-    >
+    <div className='flex items-center justify-center h-screen'>
       <div className=''>
         <h2 className='text-neutral-100 text-7xl md:text-8xl xl:text-9xl  font-medium group flex mb-2'>
           ELEVATE<span className='text-red-500 animate-pulse'>_</span>

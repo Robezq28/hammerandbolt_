@@ -1,22 +1,29 @@
 "use client";
+
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Bars2Icon, XMarkIcon } from "@heroicons/react/24/solid";
 
+// This is the NavBar component
 export default function NavBar() {
+  // States for menu visibility
   const [isOpen, setIsOpen] = useState(false);
 
-  const closeMenu = () => {
-    setIsOpen(false);
-  };
-
+  // Ref to detect outside clicks on the menu
   const menuRef = useRef(null);
 
+  // Framer Motion variants for sidebar animation
   const sidebarVariants = {
     open: { x: 0 },
     closed: { x: "100%" },
   };
 
+  // This function closes the menu
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
+  // Handle outside click to close the menu
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (!menuRef.current.contains(event.target)) {
@@ -25,17 +32,49 @@ export default function NavBar() {
       }
     };
 
+    // Attach mousedown event listener
     document.addEventListener("mousedown", handleOutsideClick);
+
+    // Clean up on unmount
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, [isOpen, menuRef]);
 
+  // Menu items
+  const menuItems = [
+    "about",
+    "work",
+    "expertise",
+    "contact",
+    "careers",
+    "blog",
+  ];
+
+  // Menu items for contact info
+  const contactItems = ["linkedin", "instagram", "hello@hammerandbolt.io"];
+
+  // Language items
+  const languageItems = ["en", "es"];
+
+  // This function generates menu items
+  const generateMenuItems = (items, textSize) =>
+    items.map((item) => (
+      <a
+        key={item}
+        href='/'
+        className={`text-neutral-100 ${textSize} font-medium group flex mb-2 sm:mb-0 sm:mr-4`}
+      >
+        {item}
+        <span className='text-red-500 group-hover:animate-pulse'>_</span>
+      </a>
+    ));
+
   return (
-    <div className='fixed top-0 w-full ' style={{ zIndex: 10000 }}>
-      {/* Mobile Menu */}{" "}
+    <div className='fixed top-0 w-full' style={{ zIndex: 10000 }}>
+      {/* Mobile Menu */}
       <div className='flex justify-start items-center lg:hidden'>
-        <div className='flex items-center justify-between w-full py-4 pr-8'>
+        <div className='flex items-end justify-between w-full py-4 pr-8'>
           <a
             href='/'
             className='text-neutral-100 text-3xl lg:text-6xl font-medium'
@@ -46,9 +85,18 @@ export default function NavBar() {
             className='text-white text-xl '
             onClick={() => setIsOpen(true)}
           >
-            <Bars2Icon className='h-6 w-6' />
+            <span className='text-neutral-100 text-2xl lg:text-6xl font-medium'>
+              menu<span className='text-red-500 animate-pulse'>_</span>
+            </span>
+
+            {/* <Bars2Icon className='h-6 w-6' /> */}
           </button>
+          <div className='fixed bottom-0 right-0 m-4'>
+            <nav>{generateMenuItems(languageItems, "text-1xl")}</nav>
+          </div>
         </div>
+
+        {/* Slide-out menu */}
         <motion.nav
           ref={menuRef}
           variants={sidebarVariants}
@@ -59,142 +107,42 @@ export default function NavBar() {
         >
           <div>
             <button
-              className='text-neutral-100 pt-4 pb-4 flex ietms-center justify-end'
+              className='text-neutral-100 pt-4 pb-4 flex items-center justify-end'
               onClick={closeMenu}
             >
-              <XMarkIcon className='h-6 w-6' />
+              <span className='text-neutral-100 text-2xl lg:text-6xl font-medium'>
+                close<span className='text-red-500 animate-pulse'>_</span>
+              </span>
+              {/* <XMarkIcon className='h-6 w-6' /> */}
             </button>
-            {/* <a
-            href='/'
-            className='text-neutral-100 text-2xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'
-          >
-            hammerandbolt<span className='text-red-500 animate-pulse'>_</span>
-          </a> */}
-            <a
-              href='/'
-              className='text-neutral-100 text-2xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'
-            >
-              about
-              <span className='text-red-500 group-hover:animate-pulse'>_</span>
-            </a>
-            <a
-              href='/'
-              className='text-neutral-100 text-2xl font-medium group flex flex-wrap mb-2 sm:mb-0 sm:mr-4'
-            >
-              work
-              <span className='text-red-500 group-hover:animate-pulse'>_</span>
-            </a>
-            <a
-              href='/'
-              className='text-neutral-100 text-2xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'
-            >
-              expertise
-              <span className='text-red-500 group-hover:animate-pulse'>_</span>
-            </a>
-            <a
-              href='/'
-              className='text-neutral-100 text-2xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'
-            >
-              contact
-              <span className='text-red-500 group-hover:animate-pulse'>_</span>
-            </a>
-            <a
-              href='/'
-              className='text-neutral-100 text-2xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'
-            >
-              careers
-              <span className='text-red-500 group-hover:animate-pulse'>_</span>
-            </a>
+            {generateMenuItems(menuItems, "text-2xl")}
           </div>
-          <div>
-            <a
-              href='/'
-              className='text-neutral-100 text-1xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'
-            >
-              linkedin
-              <span className='text-red-500 group-hover:animate-pulse'>_</span>
-            </a>
-            <a
-              href='/'
-              className='text-neutral-100 text-1xl font-medium group flex flex-wrap mb-2 sm:mb-0 sm:mr-4'
-            >
-              instagram
-              <span className='text-red-500 group-hover:animate-pulse'>_</span>
-            </a>
-            <a
-              href='/'
-              className='text-neutral-100 text-1xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'
-            >
-              hello@hammerandbolt.io
-              <span className='text-red-500 group-hover:animate-pulse'>_</span>
-            </a>
-          </div>
+
+          <div>{generateMenuItems(contactItems, "text-1xl")}</div>
         </motion.nav>
       </div>
-      {/* Desktop Menu */}
-      <div className='hidden lg:block sm:py-4 lg:h-screen'>
-        <a
-          href='/'
-          className='text-neutral-100 text-4xl sm:text-6xl font-medium'
-        >
-          hammerandbolt<span className='text-red-500 animate-pulse'>_</span>
-        </a>
-        <div className='sm:flex sm:flex-col sm:items-start sm:justify-between sm:py-4'>
-          <nav>
-            <a
-              href='/'
-              className='text-neutral-100 text-3xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
-            >
-              about
-              <span className='text-red-500 group-hover:animate-pulse'>_</span>
-            </a>
-            <a
-              href='/'
-              className='text-neutral-100 text-3xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
-            >
-              work
-              <span className='text-red-500 group-hover:animate-pulse'>_</span>
-            </a>
-            <a
-              href='/'
-              className='text-neutral-100 text-3xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
-            >
-              expertise
-              <span className='text-red-500 group-hover:animate-pulse'>_</span>
-            </a>
-            <a
-              href='/'
-              className='text-neutral-100 text-3xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
-            >
-              contact
-              <span className='text-red-500 group-hover:animate-pulse'>_</span>
-            </a>
-            <a
-              href='/'
-              className='text-neutral-100 text-3xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
-            >
-              careers
-              <span className='text-red-500 group-hover:animate-pulse'>_</span>
-            </a>
 
-            {/* Add the rest of your desktop links here */}
-          </nav>
-          <nav>
-            <a
-              href='/'
-              className='text-neutral-100 text-3xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
-            >
-              linkedin
-              <span className='text-red-500 group-hover:animate-pulse'>_</span>
-            </a>
-            <a
-              href='/'
-              className='text-neutral-100 text-3xl font-medium group block mb-2 sm:mb-0 sm:mr-4'
-            >
-              instagram
-              <span className='text-red-500 group-hover:animate-pulse'>_</span>
-            </a>
-          </nav>
+      {/* Desktop Menu */}
+      <div className='hidden lg:flex lg:flex-col lg:h-screen lg:items-start lg:justify-between sm:py-4'>
+        <div>
+          <a
+            href='/'
+            className='text-neutral-100 text-4xl sm:text-6xl font-medium'
+          >
+            hammerandbolt<span className='text-red-500 animate-pulse'>_</span>
+          </a>
+        </div>
+
+        <div className='lg:absolute lg:top-0 lg:right-0 lg:pr-4 lg:pb-4 lg:py-4'>
+          <nav>{generateMenuItems(menuItems, "text-3xl")}</nav>
+        </div>
+
+        <div className='lg:absolute lg:bottom-0 lg:right-0 lg:pr-4 lg:pb-4'>
+          <nav>{generateMenuItems(languageItems, "text-3xl")}</nav>
+        </div>
+
+        <div>
+          <nav>{generateMenuItems(contactItems, "text-3xl")}</nav>
         </div>
       </div>
     </div>

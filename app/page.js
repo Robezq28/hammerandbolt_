@@ -1,11 +1,15 @@
-import Overlay from "@/components/Overlay";
+import About from "@/components/About";
+import Hero from "@/components/Hero";
 import SphereGeometry from "@/components/SphereGeometry";
+import Work from "@/components/Work";
 
 export default function Home() {
   return (
     <>
       <div className='h-screen'>
-        <Overlay />
+        <Hero />
+        <About />
+        <Work />
       </div>
     </>
   );
