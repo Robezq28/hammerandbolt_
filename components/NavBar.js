@@ -55,56 +55,80 @@ export default function NavBar() {
           initial='closed'
           animate={isOpen ? "open" : "closed"}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className='fixed top-0 right-0 h-screen w-3/4 pl-4 bg-black overflow-auto'
+          className='fixed top-0 right-0 h-screen w-3/4 pl-4 bg-black overflow-auto flex flex-col justify-between items-start'
         >
-          <button
-            className='text-neutral-100 pt-4 pb-4 flex ietms-center justify-start'
-            onClick={closeMenu}
-          >
-            <XMarkIcon className='h-6 w-6' />
-          </button>
-          <a
+          <div>
+            <button
+              className='text-neutral-100 pt-4 pb-4 flex ietms-center justify-end'
+              onClick={closeMenu}
+            >
+              <XMarkIcon className='h-6 w-6' />
+            </button>
+            {/* <a
             href='/'
             className='text-neutral-100 text-2xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'
           >
             hammerandbolt<span className='text-red-500 animate-pulse'>_</span>
-          </a>
-          <a
-            href='/'
-            className='text-neutral-100 text-2xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'
-          >
-            about
-            <span className='text-red-500 group-hover:animate-pulse'>_</span>
-          </a>
-          <a
-            href='/'
-            className='text-neutral-100 text-2xl font-medium group flex flex-wrap mb-2 sm:mb-0 sm:mr-4'
-          >
-            work
-            <span className='text-red-500 group-hover:animate-pulse'>_</span>
-          </a>
-          <a
-            href='/'
-            className='text-neutral-100 text-2xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'
-          >
-            expertise
-            <span className='text-red-500 group-hover:animate-pulse'>_</span>
-          </a>
-          <a
-            href='/'
-            className='text-neutral-100 text-2xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'
-          >
-            contact
-            <span className='text-red-500 group-hover:animate-pulse'>_</span>
-          </a>
-          <a
-            href='/'
-            className='text-neutral-100 text-2xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'
-          >
-            careers
-            <span className='text-red-500 group-hover:animate-pulse'>_</span>
-          </a>
-          {/* Add your mobile links here */}
+          </a> */}
+            <a
+              href='/'
+              className='text-neutral-100 text-2xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'
+            >
+              about
+              <span className='text-red-500 group-hover:animate-pulse'>_</span>
+            </a>
+            <a
+              href='/'
+              className='text-neutral-100 text-2xl font-medium group flex flex-wrap mb-2 sm:mb-0 sm:mr-4'
+            >
+              work
+              <span className='text-red-500 group-hover:animate-pulse'>_</span>
+            </a>
+            <a
+              href='/'
+              className='text-neutral-100 text-2xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'
+            >
+              expertise
+              <span className='text-red-500 group-hover:animate-pulse'>_</span>
+            </a>
+            <a
+              href='/'
+              className='text-neutral-100 text-2xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'
+            >
+              contact
+              <span className='text-red-500 group-hover:animate-pulse'>_</span>
+            </a>
+            <a
+              href='/'
+              className='text-neutral-100 text-2xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'
+            >
+              careers
+              <span className='text-red-500 group-hover:animate-pulse'>_</span>
+            </a>
+          </div>
+          <div>
+            <a
+              href='/'
+              className='text-neutral-100 text-1xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'
+            >
+              linkedin
+              <span className='text-red-500 group-hover:animate-pulse'>_</span>
+            </a>
+            <a
+              href='/'
+              className='text-neutral-100 text-1xl font-medium group flex flex-wrap mb-2 sm:mb-0 sm:mr-4'
+            >
+              instagram
+              <span className='text-red-500 group-hover:animate-pulse'>_</span>
+            </a>
+            <a
+              href='/'
+              className='text-neutral-100 text-1xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'
+            >
+              hello@hammerandbolt.io
+              <span className='text-red-500 group-hover:animate-pulse'>_</span>
+            </a>
+          </div>
         </motion.nav>
       </div>
       {/* Desktop Menu */}

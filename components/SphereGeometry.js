@@ -55,7 +55,7 @@ const SphereGeometry = () => {
   return (
     <Canvas>
       <PerspectiveCamera makeDefault position={[0, 0, 7]} />
-      <ambientLight intensity={0.5} color='yellow' />
+      <ambientLight intensity={0.7} color='yellow' />
       <spotLight
         position={[10, 10, 10]}
         color='green'
@@ -75,7 +75,6 @@ const SphereGeometry = () => {
         </div>
       </Html> */}
       <RotatingSphere />
-      <OrbitControls enableZoom={false} enablePan={false} />
     </Canvas>
   );
 };
