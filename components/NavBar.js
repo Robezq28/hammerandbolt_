@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-
+import { Bars2Icon, XMarkIcon } from "@heroicons/react/24/solid";
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -17,16 +17,16 @@ export default function NavBar() {
   return (
     <div className='fixed top-0 w-full z-50'>
       {/* Mobile Menu */}{" "}
-      <div className='block sm:hidden'>
-        <h1 className='text-neutral-100 text-4xl sm:text-6xl font-medium pt-4'>
-          hammerandbolt<span className='text-red-500 animate-pulse'>_</span>
-        </h1>
-        <div className='flex items-center justify-end'>
+      <div className='flex justify-start items-center sm:hidden'>
+        <div className='flex items-center justify-around w-full py-4'>
+          <h1 className='text-neutral-100 text-3xl sm:text-6xl font-medium'>
+            hammerandbolt<span className='text-red-500 animate-pulse'>_</span>
+          </h1>
           <button
             className='text-white text-xl '
             onClick={() => setIsOpen(true)}
           >
-            Open
+            <Bars2Icon className='h-6 w-6' />
           </button>
         </div>
         <motion.nav
@@ -36,8 +36,12 @@ export default function NavBar() {
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
           className='fixed top-0 left-0 h-screen w-64 pl-4 bg-black overflow-auto'
         >
-          <button className='text-neutral-100 p-4' onClick={closeMenu}>
-            Close Menu
+          b
+          <button
+            className='text-neutral-100 py-4 flex ietms-center justify-start'
+            onClick={closeMenu}
+          >
+            <XMarkIcon className='h-6 w-6' />
           </button>
           <a
             href='/'
@@ -74,7 +78,6 @@ export default function NavBar() {
             careers
             <span className='text-red-500 group-hover:animate-pulse'>_</span>
           </a>
-
           {/* Add your mobile links here */}
         </motion.nav>
       </div>
