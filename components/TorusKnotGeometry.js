@@ -1,84 +1,92 @@
 "use client";
-import { Vector3 } from "three";
-import { useRef } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useGLTF, SpotLight, useDepthBuffer } from "@react-three/drei";
+import * as THREE from "three";
+import { useMemo, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Trail, Float, Line, Sphere, Stars } from "@react-three/drei";
+import { EffectComposer, Bloom } from "@react-three/postprocessing";
 
 export default function App() {
   return (
-    <Canvas
-      shadows
-      dpr={[1, 2]}
-      camera={{ position: [-2, 2, 6], fov: 50, near: 1, far: 20 }}
-    >
-      <color attach='background' args={["#000000"]} />
-      <fog attach='fog' args={["#000000", 5, 20]} />
-      <ambientLight intensity={0.015} />
-      <Scene />
+    <Canvas camera={{ position: [0, 0, 10] }}>
+      <color attach='background' args={["black"]} />
+      <Float speed={4} rotationIntensity={1} floatIntensity={2}>
+        <Atom />
+      </Float>
+      <Stars saturation={0} count={400} speed={0.5} />
+      <EffectComposer>
+        <Bloom mipmapBlur luminanceThreshold={1} radius={0.7} />
+      </EffectComposer>
     </Canvas>
   );
 }
 
-function Scene() {
-  // This is a super cheap depth buffer that only renders once (frames: 1 is optional!), which works well for static scenes
-  // Spots can optionally use that for realism, learn about soft particles here: http://john-chapman-graphics.blogspot.com/2013/01/good-enough-volumetrics-for-spotlights.html
-  const depthBuffer = useDepthBuffer({ frames: 1 });
-  const { nodes, materials } = useGLTF(
-    "https://market-assets.fra1.cdn.digitaloceanspaces.com/market-assets/models/dragon/model.gltf"
+function Atom(props) {
+  const points = useMemo(
+    () =>
+      new THREE.EllipseCurve(0, 0, 3, 1.15, 0, 2 * Math.PI, false, 0).getPoints(
+        100
+      ),
+    []
   );
   return (
-    <>
-      <MovingSpot
-        depthBuffer={depthBuffer}
-        color='#0c8cbf'
-        position={[3, 3, 2]}
+    <group {...props}>
+      <Line worldUnits points={points} color='turquoise' lineWidth={0.3} />
+      <Line
+        worldUnits
+        points={points}
+        color='turquoise'
+        lineWidth={0.3}
+        rotation={[0, 0, 1]}
       />
-      <MovingSpot
-        depthBuffer={depthBuffer}
-        color='#b00c3f'
-        position={[1, 3, 0]}
+      <Line
+        worldUnits
+        points={points}
+        color='turquoise'
+        lineWidth={0.3}
+        rotation={[0, 0, -1]}
       />
-      <mesh
-        position={[0, -1.03, 0]}
-        castShadow
-        receiveShadow
-        geometry={nodes.dragon.geometry}
-        material={materials["Default OBJ.001"]}
-        dispose={null}
+      <Electron position={[0, 0, 0.5]} speed={6} />
+      <Electron
+        position={[0, 0, 0.5]}
+        rotation={[0, 0, Math.PI / 3]}
+        speed={6.5}
       />
-      <mesh receiveShadow position={[0, -1, 0]} rotation-x={-Math.PI / 2}>
-        <planeGeometry args={[50, 50]} />
-        <meshPhongMaterial />
-      </mesh>
-    </>
+      <Electron
+        position={[0, 0, 0.5]}
+        rotation={[0, 0, -Math.PI / 3]}
+        speed={7}
+      />
+      <Sphere args={[0.55, 64, 64]}>
+        <meshBasicMaterial color={[6, 0.5, 2]} toneMapped={false} />
+      </Sphere>
+    </group>
   );
 }
 
-function MovingSpot({ vec = new Vector3(), ...props }) {
-  const light = useRef();
-  const viewport = useThree((state) => state.viewport);
+function Electron({ radius = 2.75, speed = 6, ...props }) {
+  const ref = useRef();
   useFrame((state) => {
-    light.current.target.position.lerp(
-      vec.set(
-        (state.mouse.x * viewport.width) / 2,
-        (state.mouse.y * viewport.height) / 2,
-        0
-      ),
-      0.1
+    const t = state.clock.getElapsedTime() * speed;
+    ref.current.position.set(
+      Math.sin(t) * radius,
+      (Math.cos(t) * radius * Math.atan(t)) / Math.PI / 1.25,
+      0
     );
-    light.current.target.updateMatrixWorld();
   });
   return (
-    <SpotLight
-      castShadow
-      ref={light}
-      penumbra={1}
-      distance={6}
-      angle={0.35}
-      attenuation={5}
-      anglePower={4}
-      intensity={2}
-      {...props}
-    />
+    <group {...props}>
+      <Trail
+        local
+        width={5}
+        length={6}
+        color={new THREE.Color(2, 1, 10)}
+        attenuation={(t) => t * t}
+      >
+        <mesh ref={ref}>
+          <sphereGeometry args={[0.25]} />
+          <meshBasicMaterial color={[10, 1, 10]} toneMapped={false} />
+        </mesh>
+      </Trail>
+    </group>
   );
 }

@@ -5,9 +5,8 @@ import TorusKnotGeometry from "@/components/TorusKnotGeometry";
 export default function Home() {
   return (
     <>
-      <div className=' h-screen'>
+      <div className='h-screen'>
         <NavBar />
-        <TorusKnotGeometry />
       </div>
     </>
   );

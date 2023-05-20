@@ -34,11 +34,10 @@ export default function NavBar() {
           initial='closed'
           animate={isOpen ? "open" : "closed"}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className='fixed top-0 left-0 h-screen w-64 pl-4 bg-black overflow-auto'
+          className='fixed top-0 left-0 h-screen w-full pl-4 bg-black overflow-auto'
         >
-          b
           <button
-            className='text-neutral-100 pb-4 flex ietms-center justify-start'
+            className='text-neutral-100 pt-4 pb-4 flex ietms-center justify-start'
             onClick={closeMenu}
           >
             <XMarkIcon className='h-6 w-6' />
