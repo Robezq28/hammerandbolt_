@@ -38,7 +38,7 @@ export default function NavBar() {
         >
           b
           <button
-            className='text-neutral-100 py-4 flex ietms-center justify-start'
+            className='text-neutral-100 pb-4 flex ietms-center justify-start'
             onClick={closeMenu}
           >
             <XMarkIcon className='h-6 w-6' />
