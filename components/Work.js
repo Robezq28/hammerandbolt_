@@ -28,9 +28,11 @@ const proyectItems = [
 export default function Work() {
   return (
     <div className='grid grid-cols-1 md:grid-cols-3 h-auto items-start md:items-center'>
-      <h2 className='md:sticky top-1/2 transform -translate-y-1/2 text-neutral-100 text-7xl md:text-8xl xl:text-9xl font-medium group flex mb-2'>
-        work<span className='text-red-500 animate-pulse'>_</span>
-      </h2>
+      <div className='w-full md:w-1/2 md:sticky top-1/2 transform -translate-y-1/2'>
+        <h2 className='text-neutral-100 text-7xl md:text-8xl xl:text-9xl font-medium group mb-2'>
+          work<span className='text-red-500 animate-pulse'>_</span>
+        </h2>
+      </div>
       <div className='grid grid-cols-1 gap-4 md:col-span-2 w-full items-start justify-items-center'>
         {/* Repeat this div for each item of work you want to showcase */}
         {proyectItems.map((item) => (
@@ -53,9 +55,7 @@ export default function Work() {
                 </h2>
                 <p className='text-neutral-100 text-2xl md:text-3xl xl:text-3xl font-medium group flex my-4 max-w-full'>
                   {item.description}
-                  <span className='text-red-500 animate-pulse inline-block'>
-                    _
-                  </span>
+                  <span className='text-red-500 animate-pulse'>_</span>
                 </p>
               </a>
             </div>
