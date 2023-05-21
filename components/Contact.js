@@ -40,9 +40,13 @@ export default function Contact() {
           <br />
           <p className='text-neutral-300 text-4xl md:text-5xl xl:text-6xl font-medium group mb-2'>
             with us, you don<span>&#39;</span>t just get a website - you get a
-            high-performance, custom-made powerhouse. It<span>&#39;</span>s like
-            swapping your old bicycle for a{" "}
-            <span className='underline decoration-red-500'>rocket ship</span>.
+            high-performance, custom-made powerhouse.
+          </p>
+          <br />
+          <p className='text-neutral-300 text-4xl md:text-5xl xl:text-6xl font-medium group mb-2'>
+            it<span>&#39;</span>s like swapping your old bicycle for a{" "}
+            <span className='underline decoration-red-500'>rocket ship</span> 🚀
+            .
           </p>
         </div>
       </div>

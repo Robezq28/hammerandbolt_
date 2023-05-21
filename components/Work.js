@@ -7,21 +7,14 @@ const proyectItems = [
     description:
       "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
     image: "/images/honey-med.png",
-    link: "https://www.honey.com/",
+    link: "https://honey-med.vercel.app/",
   },
   {
-    name: "honeymed.",
+    name: "dcatalá",
     description:
       "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
     image: "/images/honey-med.png",
-    link: "https://www.honey.com/",
-  },
-  {
-    name: "honeymed.",
-    description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
-    image: "/images/honey-med.png",
-    link: "https://www.honey.com/",
+    link: "https://dc-next-app.vercel.app/",
   },
 ];
 

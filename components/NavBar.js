@@ -43,16 +43,18 @@ export default function NavBar() {
 
   // Menu items
   const menuItems = [
+    "home",
+    "intro",
     "about",
-    "work",
     "expertise",
+    "work",
     "contact",
     "careers",
     "blog",
   ];
 
   // Menu items for contact info
-  const contactItems = ["linkedin", "instagram", "hello@hammerandbolt.io"];
+  const contactItems = ["linkedin", "instagram", "email", "message", "phone"];
 
   // Language items
   const languageItems = ["en", "es"];

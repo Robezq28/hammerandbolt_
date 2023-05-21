@@ -40,9 +40,19 @@ export default function About() {
           <br />
           <p className='text-neutral-300 text-4xl md:text-5xl xl:text-6xl font-medium group mb-2'>
             we build websites that aren<span>&#39;</span>t just good to look at
-            - they work like a dream, too. Smooth, quick, responsive - it
-            <span>&#39;</span>s like they read your mind. Get ready to impress
-            your customers and make your competitors jealous
+            - they work like a dream, too.
+            <span className='text-red-500 animate-pulse'>_</span>
+          </p>
+          <br />
+          <p className='text-neutral-300 text-4xl md:text-5xl xl:text-6xl font-medium group mb-2'>
+            smooth, quick, responsive - it
+            <span>&#39;</span>s like they read your mind.
+            <span className='text-red-500 animate-pulse'>_</span>
+          </p>
+          <br />
+          <p className='text-neutral-300 text-4xl md:text-5xl xl:text-6xl font-medium group mb-2'>
+            get ready to impress your customers and make your competitors
+            jealous
             <span className='text-red-500 animate-pulse'>_</span>
           </p>
         </div>
