@@ -70,7 +70,33 @@ export default function NavBar() {
         className={`text-neutral-300 ${textSize} font-medium group flex mb-2 sm:mb-0 sm:mr-4`}
       >
         {item}
+        <span className='text-black group-hover:animate-pulse'>_</span>
+      </a>
+    ));
+
+  // This function generates language items
+  const generateLanguageItems = (items, textSize) =>
+    items.map((item) => (
+      <a
+        key={item}
+        href='/'
+        className={`text-neutral-300 ${textSize} font-medium group flex mb-2 sm:mb-0 sm:mr-4`}
+      >
+        {item}
         <span className='text-red-500 group-hover:animate-pulse'>_</span>
+      </a>
+    ));
+
+  // This function generates contact items
+  const generateContactItems = (items, textSize) =>
+    items.map((item) => (
+      <a
+        key={item}
+        href='/'
+        className={`text-neutral-300 ${textSize} font-medium group flex mb-2 sm:mb-0 sm:mr-4`}
+      >
+        {item}
+        <span className='text-black group-hover:animate-pulse'>_</span>
       </a>
     ));
 
@@ -92,11 +118,9 @@ export default function NavBar() {
             <span className='text-neutral-300 text-2xl lg:text-6xl font-medium'>
               menu<span className='text-red-500 animate-pulse'>_</span>
             </span>
-
-            {/* <Bars2Icon className="h-6 w-6" /> */}
           </button>
           <div className='fixed bottom-0 right-0 m-4'>
-            <nav>{generateMenuItems(languageItems, "text-1xl")}</nav>
+            <nav>{generateLanguageItems(languageItems, "text-1xl")}</nav>
           </div>
         </div>
 
@@ -104,7 +128,7 @@ export default function NavBar() {
         <animated.nav
           ref={menuRef}
           style={menuAnimation}
-          className='fixed top-0 right-0 h-screen w-64 pl-4 bg-black overflow-auto flex flex-col justify-between items-start'
+          className='fixed top-0 right-0 h-screen w-64 pl-4 bg-red-700 overflow-auto flex flex-col justify-between items-start'
         >
           <div>
             <button
@@ -112,14 +136,12 @@ export default function NavBar() {
               onClick={closeMenu}
             >
               <span className='text-neutral-300 text-2xl lg:text-6xl font-medium'>
-                close<span className='text-red-500 animate-pulse'>_</span>
+                close<span className='text-black animate-pulse'>_</span>
               </span>
-              {/* <XMarkIcon className="h-6 w-6" /> */}
             </button>
             {generateMenuItems(menuItems, "text-2xl")}
           </div>
-
-          <div>{generateMenuItems(contactItems, "text-1xl")}</div>
+          <div>{generateContactItems(contactItems, "text-1xl")}</div>
         </animated.nav>
       </div>
 
@@ -139,7 +161,6 @@ export default function NavBar() {
         <div className='lg:absolute lg:bottom-0 lg:right-0 lg:pr-4 lg:pb-4'>
           <nav>{generateMenuItems(languageItems, "text-3xl")}</nav>
         </div>
-        a
         <div>
           <nav>{generateMenuItems(contactItems, "text-3xl")}</nav>
         </div>
