@@ -3,7 +3,7 @@ import React from "react";
 export default function Hero() {
   return (
     <div className='flex items-center justify-center h-screen'>
-      <div className=''>
+      <div>
         <h2 className=' text-neutral-300 text-6xl md:text-8xl xl:text-9xl  font-medium group flex mb-2'>
           From coffee
         </h2>

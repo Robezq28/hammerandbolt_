@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function About() {
+export default function Contact() {
   return (
     <>
       {/* <div className='flex flex-col md:flex-row items-center justify-center h-screen'>
@@ -29,21 +29,20 @@ export default function About() {
       <div className='flex flex-col md:flex-row items-center justify-center h-screen'>
         <div className='w-full md:w-1/2 md:sticky top-1/2 transform -translate-y-1/2'>
           <h2 className='text-neutral-300 text-7xl md:text-8xl xl:text-9xl font-medium group mb-2'>
-            about<span className='text-red-500 animate-pulse'>_</span>
+            contact<span className='text-red-500 animate-pulse'>_</span>
           </h2>
         </div>
         <div className='w-full md:w-2/3'>
           <p className='text-neutral-300 text-4xl md:text-5xl xl:text-6xl font-medium group mb-2'>
-            more than just pretty pixels
+            supercharge your online presence
             <span className='text-red-500 animate-pulse'>_</span>
           </p>
           <br />
           <p className='text-neutral-300 text-4xl md:text-5xl xl:text-6xl font-medium group mb-2'>
-            we build websites that aren<span>&#39;</span>t just good to look at
-            - they work like a dream, too. Smooth, quick, responsive - it
-            <span>&#39;</span>s like they read your mind. Get ready to impress
-            your customers and make your competitors jealous
-            <span className='text-red-500 animate-pulse'>_</span>
+            with us, you don<span>&#39;</span>t just get a website - you get a
+            high-performance, custom-made powerhouse. It<span>&#39;</span>s like
+            swapping your old bicycle for a{" "}
+            <span className='underline decoration-red-500'>rocket ship</span>.
           </p>
         </div>
       </div>

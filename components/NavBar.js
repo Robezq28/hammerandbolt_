@@ -103,7 +103,7 @@ export default function NavBar() {
           initial='closed'
           animate={isOpen ? "open" : "closed"}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className='fixed top-0 right-0 h-screen w-full pl-4 bg-black overflow-auto flex flex-col justify-between items-start'
+          className='fixed top-0 right-0 h-screen w-64 pl-4 bg-black overflow-auto flex flex-col justify-between items-start'
         >
           <div>
             <button
