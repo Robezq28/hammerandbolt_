@@ -10,7 +10,7 @@ export default function About() {
       </div>
       <div className='w-full md:w-2/3'>
         <p className='text-neutral-300 text-4xl md:text-5xl xl:text-6xl font-medium group mb-2'>
-          we're more than coders, we're digital bolders
+          we&aposre more than coders, we&aposre digital bolders
           <span className='text-red-500 animate-pulse'>_</span>
         </p>
         <br />
