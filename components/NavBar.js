@@ -15,7 +15,7 @@ export default function NavBar() {
   // Framer Motion variants for sidebar animation
   const sidebarVariants = {
     open: { x: 0 },
-    closed: { x: "100%" },
+    closed: { x: "300%" },
   };
 
   // This function closes the menu
@@ -63,7 +63,7 @@ export default function NavBar() {
       <a
         key={item}
         href='/'
-        className={`text-neutral-100 ${textSize} font-medium group flex mb-2 sm:mb-0 sm:mr-4`}
+        className={`text-neutral-300 ${textSize} font-medium group flex mb-2 sm:mb-0 sm:mr-4`}
       >
         {item}
         <span className='text-red-500 group-hover:animate-pulse'>_</span>
@@ -71,13 +71,13 @@ export default function NavBar() {
     ));
 
   return (
-    <div className='fixed top-0 w-full' style={{ zIndex: 10000 }}>
+    <div className='fixed top-0 w-full' style={{ zIndex: 30000 }}>
       {/* Mobile Menu */}
       <div className='flex justify-start items-center lg:hidden'>
         <div className='flex items-end justify-between w-full py-4 pr-8 bg-black'>
           <a
             href='/'
-            className='text-neutral-100 text-3xl lg:text-6xl font-medium'
+            className='text-neutral-300 text-3xl lg:text-6xl font-medium'
           >
             hammerandbolt<span className='text-red-500 animate-pulse'>_</span>
           </a>
@@ -85,7 +85,7 @@ export default function NavBar() {
             className='text-white text-xl '
             onClick={() => setIsOpen(true)}
           >
-            <span className='text-neutral-100 text-2xl lg:text-6xl font-medium'>
+            <span className='text-neutral-300 text-2xl lg:text-6xl font-medium'>
               menu<span className='text-red-500 animate-pulse'>_</span>
             </span>
 
@@ -107,10 +107,10 @@ export default function NavBar() {
         >
           <div>
             <button
-              className='text-neutral-100 pt-4 pb-4 flex items-end justify-end'
+              className='text-neutral-300 pt-4 pb-4 flex items-end justify-end'
               onClick={closeMenu}
             >
-              <span className='text-neutral-100 text-2xl lg:text-6xl font-medium'>
+              <span className='text-neutral-300 text-2xl lg:text-6xl font-medium'>
                 close<span className='text-red-500 animate-pulse'>_</span>
               </span>
               {/* <XMarkIcon className='h-6 w-6' /> */}
@@ -127,7 +127,7 @@ export default function NavBar() {
         <div>
           <a
             href='/'
-            className='text-neutral-100 text-4xl sm:text-6xl font-medium'
+            className='text-neutral-300 text-4xl sm:text-6xl font-medium'
           >
             hammerandbolt<span className='text-red-500 animate-pulse'>_</span>
           </a>
