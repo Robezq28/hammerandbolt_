@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { useSpring, animated, useTrail } from "@react-spring/web";
-import { Bars2Icon, XMarkIcon } from "@heroicons/react/24/solid";
+import { useSpring, animated } from "@react-spring/web";
 
 // This is the NavBar component
 export default function NavBar() {
@@ -62,27 +61,19 @@ export default function NavBar() {
   // Language items
   const languageItems = ["en", "es"];
 
-  // Animation trail for menu items
-  const trail = useTrail(menuItems.length, {
-    opacity: isOpen ? 1 : 0,
-    transform: isOpen ? "translate3d(0,0,0)" : "translate3d(5%,0,0)",
-  });
-
   // This function generates menu items
   const generateMenuItems = (items, textSize) =>
-    trail.map((props, index) => (
-      <animated.a
-        key={items[index]}
+    items.map((item) => (
+      <a
+        key={item}
         href='/'
-        style={props}
         className={`text-neutral-300 ${textSize} font-medium group flex mb-2 sm:mb-0 sm:mr-4`}
       >
-        {items[index]}
+        {item}
         <span className='text-red-500 group-hover:animate-pulse'>_</span>
-      </animated.a>
+      </a>
     ));
 
-  // Rest of your component...
   return (
     <div className='fixed top-0 w-full' style={{ zIndex: 30000 }}>
       {/* Mobile Menu */}
