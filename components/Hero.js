@@ -3,7 +3,7 @@ import React from "react";
 import { useSpring, animated } from "@react-spring/web";
 
 export default function Hero() {
-  const fadeIn = useSpring({ opacity: 1, from: { opacity: 0 }, delay: 1000 });
+  const fadeIn = useSpring({ opacity: 1, from: { opacity: 0 }, delay: 200 });
 
   return (
     <animated.div

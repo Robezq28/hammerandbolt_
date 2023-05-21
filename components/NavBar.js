@@ -24,28 +24,28 @@ export default function NavBar() {
   const fadeInTitle = useSpring({
     opacity: 1,
     from: { opacity: 0 },
-    delay: 100,
+    delay: 700,
   });
 
   // FadeIn animation for menu items
   const fadeInMenuItems = useSpring({
     opacity: 1,
     from: { opacity: 0 },
-    delay: 600,
+    delay: 700,
   });
 
   // FadeIn animation for contact items
   const fadeInContactItems = useSpring({
     opacity: 1,
     from: { opacity: 0 },
-    delay: 800,
+    delay: 700,
   });
 
   // FadeIn animation for language items
   const fadeInLanguage = useSpring({
     opacity: 1,
     from: { opacity: 0 },
-    delay: 950,
+    delay: 700,
   });
 
   // This function closes the menu
@@ -227,7 +227,7 @@ export default function NavBar() {
           </animated.nav>
         </div>
         <div className='lg:absolute lg:bottom-0 lg:right-0 lg:pr-4 lg:pb-4'>
-          <animated.nav style={fadeInMenuItems}>
+          <animated.nav style={fadeInLanguage}>
             {generateLanguageItems(languageItems, "text-3xl")}
           </animated.nav>
         </div>
