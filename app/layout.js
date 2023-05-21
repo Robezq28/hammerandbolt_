@@ -9,6 +9,12 @@ const roboto = Roboto({
   display: "swap",
 });
 
+export const metadata = {
+  title: "hammerandbolt_ | web development",
+  description: "Clínica virtual para la atención de pacientes con diabetes",
+  themeColor: "#ffffff",
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang='en' className={roboto.className}>
