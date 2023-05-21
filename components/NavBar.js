@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { useSpring, animated, useTrail } from "@react-spring/web";
+import LanguageButton from "./LanguageButton";
 
 // This is the NavBar component
 export default function NavBar() {
@@ -183,9 +184,7 @@ export default function NavBar() {
             </span>
           </animated.button>
           <div className='fixed bottom-0 right-0 m-4'>
-            <animated.nav style={fadeInLanguage}>
-              {generateLanguageItems(languageItems, "text-1xl")}
-            </animated.nav>
+            <LanguageButton />
           </div>
         </div>
 
@@ -227,9 +226,7 @@ export default function NavBar() {
           </animated.nav>
         </div>
         <div className='lg:absolute lg:bottom-0 lg:right-0 lg:pr-4 lg:pb-4'>
-          <animated.nav style={fadeInLanguage}>
-            {generateLanguageItems(languageItems, "text-3xl")}
-          </animated.nav>
+          <LanguageButton />
         </div>
         <div>
           <animated.nav style={fadeInContactItems}>
