@@ -21,7 +21,7 @@ export default function Intro() {
         </p>
         <br />
         <p className='text-neutral-300 text-4xl md:text-5xl xl:text-6xl font-medium group mb-2'>
-          say bye to slow load times and hello to lightning-fast browsing{" "}
+          say bye bye 👋 to slow load times and hello to lightning-fast browsing{" "}
           <span className='text-red-500 animate-pulse'>_</span>
         </p>
       </div>
