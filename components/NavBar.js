@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { useSpring, animated } from "@react-spring/web";
+import { useSpring, animated, useTrail } from "@react-spring/web";
 
 // This is the NavBar component
 export default function NavBar() {
@@ -18,6 +18,27 @@ export default function NavBar() {
       tension: 210,
       friction: 20,
     },
+  });
+
+  // FadeIn animation for title text
+  const fadeInTitle = useSpring({
+    opacity: 1,
+    from: { opacity: 0 },
+    delay: 100,
+  });
+
+  // FadeIn animation for menu items
+  const fadeInMenuItems = useSpring({
+    opacity: 1,
+    from: { opacity: 0 },
+    delay: 600,
+  });
+
+  // FadeIn animation for contact items
+  const fadeInContactItems = useSpring({
+    opacity: 1,
+    from: { opacity: 0 },
+    delay: 800,
   });
 
   // This function closes the menu
@@ -55,14 +76,34 @@ export default function NavBar() {
     "blog",
   ];
 
+  // Animation trail for menu items
+  const trail = useTrail(menuItems.length, {
+    opacity: isOpen ? 1 : 0,
+    transform: isOpen ? "translate3d(0,0,0)" : "translate3d(5%,0,0)",
+  });
+
   // Menu items for contact info
   const contactItems = ["linkedin", "instagram", "email", "message", "phone"];
 
   // Language items
   const languageItems = ["en", "es"];
 
-  // This function generates menu items
-  const generateMenuItems = (items, textSize) =>
+  // This function generates menu items for mobile
+  const generateMenuItemsMobile = (items, textSize) =>
+    trail.map((props, index) => (
+      <animated.a
+        key={items[index]}
+        href='/'
+        style={props}
+        className={`text-neutral-300 ${textSize} font-medium group flex mb-2 sm:mb-0 sm:mr-4`}
+      >
+        {items[index]}
+        <span className='text-black group-hover:animate-pulse'>_</span>
+      </animated.a>
+    ));
+
+  // This function generates menu items for desktop
+  const generateMenuItemsDesktop = (items, textSize) =>
     items.map((item) => (
       <a
         key={item}
@@ -70,7 +111,7 @@ export default function NavBar() {
         className={`text-neutral-300 ${textSize} font-medium group flex mb-2 sm:mb-0 sm:mr-4`}
       >
         {item}
-        <span className='text-black group-hover:animate-pulse'>_</span>
+        <span className='text-red-500 group-hover:animate-pulse'>_</span>
       </a>
     ));
 
@@ -100,25 +141,40 @@ export default function NavBar() {
       </a>
     ));
 
+  // This function generates contact items
+  const generateContactItemsDesktop = (items, textSize) =>
+    items.map((item) => (
+      <a
+        key={item}
+        href='/'
+        className={`text-neutral-300 ${textSize} font-medium group flex mb-2 sm:mb-0 sm:mr-4`}
+      >
+        {item}
+        <span className='text-red-500 group-hover:animate-pulse'>_</span>
+      </a>
+    ));
+
   return (
     <div className='fixed top-0 w-full' style={{ zIndex: 30000 }}>
       {/* Mobile Menu */}
       <div className='flex justify-start items-center lg:hidden'>
         <div className='flex items-end justify-between w-full py-4 pr-8 bg-black'>
-          <a
+          <animated.a
+            style={fadeInTitle}
             href='/'
             className='text-neutral-300 text-3xl lg:text-6xl font-medium'
           >
             hammerandbolt<span className='text-red-500 animate-pulse'>_</span>
-          </a>
-          <button
+          </animated.a>
+          <animated.button
+            style={fadeInMenuItems}
             className='text-white text-xl'
             onClick={() => setIsOpen(true)}
           >
             <span className='text-neutral-300 text-2xl lg:text-6xl font-medium'>
               menu<span className='text-red-500 animate-pulse'>_</span>
             </span>
-          </button>
+          </animated.button>
           <div className='fixed bottom-0 right-0 m-4'>
             <nav>{generateLanguageItems(languageItems, "text-1xl")}</nav>
           </div>
@@ -139,7 +195,7 @@ export default function NavBar() {
                 close<span className='text-black animate-pulse'>_</span>
               </span>
             </button>
-            {generateMenuItems(menuItems, "text-2xl")}
+            {generateMenuItemsMobile(menuItems, "text-2xl")}
           </div>
           <div>{generateContactItems(contactItems, "text-1xl")}</div>
         </animated.nav>
@@ -148,21 +204,28 @@ export default function NavBar() {
       {/* Desktop Menu */}
       <div className='hidden lg:flex lg:flex-col lg:h-screen lg:items-start lg:justify-between sm:py-4'>
         <div>
-          <a
+          <animated.a
+            style={fadeInTitle}
             href='/'
             className='text-neutral-300 text-4xl sm:text-6xl font-medium'
           >
             hammerandbolt<span className='text-red-500 animate-pulse'>_</span>
-          </a>
+          </animated.a>
         </div>
         <div className='lg:absolute lg:top-0 lg:right-0 lg:pr-4 lg:pb-4 lg:py-4'>
-          <nav>{generateMenuItems(menuItems, "text-3xl")}</nav>
+          <animated.nav style={fadeInMenuItems}>
+            {generateMenuItemsDesktop(menuItems, "text-3xl")}
+          </animated.nav>
         </div>
         <div className='lg:absolute lg:bottom-0 lg:right-0 lg:pr-4 lg:pb-4'>
-          <nav>{generateMenuItems(languageItems, "text-3xl")}</nav>
+          <animated.nav style={fadeInMenuItems}>
+            {generateLanguageItems(languageItems, "text-3xl")}
+          </animated.nav>
         </div>
         <div>
-          <nav>{generateMenuItems(contactItems, "text-3xl")}</nav>
+          <animated.nav style={fadeInContactItems}>
+            {generateContactItemsDesktop(contactItems, "text-3xl")}
+          </animated.nav>
         </div>
       </div>
     </div>
