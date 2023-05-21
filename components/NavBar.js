@@ -41,6 +41,13 @@ export default function NavBar() {
     delay: 800,
   });
 
+  // FadeIn animation for language items
+  const fadeInLanguage = useSpring({
+    opacity: 1,
+    from: { opacity: 0 },
+    delay: 950,
+  });
+
   // This function closes the menu
   const closeMenu = () => {
     setIsOpen(false);
@@ -176,7 +183,9 @@ export default function NavBar() {
             </span>
           </animated.button>
           <div className='fixed bottom-0 right-0 m-4'>
-            <nav>{generateLanguageItems(languageItems, "text-1xl")}</nav>
+            <animated.nav style={fadeInLanguage}>
+              {generateLanguageItems(languageItems, "text-1xl")}
+            </animated.nav>
           </div>
         </div>
 
