@@ -1,8 +1,15 @@
+"use client";
 import React from "react";
+import { useSpring, animated } from "@react-spring/web";
 
 export default function Hero() {
+  const fadeIn = useSpring({ opacity: 1, from: { opacity: 0 }, delay: 200 });
+
   return (
-    <div className='flex items-center justify-center h-screen flex-col'>
+    <animated.div
+      style={fadeIn}
+      className='flex items-center justify-center h-screen flex-col'
+    >
       <div>
         <h2 className='text-neutral-300 text-6xl md:text-8xl xl:text-9xl font-medium mb-2'>
           From coffee
@@ -19,6 +26,6 @@ export default function Hero() {
           <span className='text-red-500 animate-pulse'>_</span>
         </h2>
       </div>
-    </div>
+    </animated.div>
   );
 }
