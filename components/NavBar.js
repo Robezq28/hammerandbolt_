@@ -193,7 +193,7 @@ export default function NavBar() {
         <animated.nav
           ref={menuRef}
           style={menuAnimation}
-          className='fixed top-0 right-0 h-screen w-64 pl-4 bg-red-700 overflow-auto flex flex-col justify-between items-start'
+          className='fixed top-0 right-0 h-screen w-64 pl-4 bg-red-800 overflow-auto flex flex-col justify-between items-start'
         >
           <div>
             <button
