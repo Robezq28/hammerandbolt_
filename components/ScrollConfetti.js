@@ -22,9 +22,8 @@ const ScrollConfetti = ({ triggerHeight, config }) => {
   }, [triggerHeight]);
 
   return (
-    <span className='absolute'>
+    <span className='overflow-hidden'>
       <Confetti active={activateConfetti} config={config} /> 🎉
-      <span className='text-red-500 animate-pulse'>_</span>
     </span>
   );
 };
