@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSpring, animated, useTrail } from "@react-spring/web";
 import LanguageButton from "./LanguageButton";
+import Link from "next/link";
 
 // This is the NavBar component
 export default function NavBar() {
@@ -98,15 +99,16 @@ export default function NavBar() {
   // This function generates menu items for mobile
   const generateMenuItemsMobile = (items, textSize) =>
     trail.map((props, index) => (
-      <animated.a
-        key={items[index]}
-        href='/'
-        style={props}
-        className={`text-neutral-300 ${textSize} font-medium group flex mb-2 sm:mb-0 sm:mr-4`}
-      >
-        {items[index]}
-        <span className='text-black group-hover:animate-pulse'>_</span>
-      </animated.a>
+      <Link key={items[index]} href={`/${items[index]}`}>
+        <animated.button
+          onClick={closeMenu}
+          style={props}
+          className={`text-neutral-300 ${textSize} font-medium group flex mb-2 sm:mb-0 sm:mr-4`}
+        >
+          {items[index]}
+          <span className='text-black group-hover:animate-pulse'>_</span>
+        </animated.button>
+      </Link>
     ));
 
   // This function generates menu items for desktop
@@ -166,13 +168,14 @@ export default function NavBar() {
       {/* Mobile Menu */}
       <div className='flex justify-start items-center lg:hidden'>
         <div className='flex items-end justify-between w-full py-4 pr-8 bg-black'>
-          <animated.a
-            style={fadeInTitle}
-            href='/'
-            className='text-neutral-300 text-3xl lg:text-6xl font-medium'
-          >
-            hammerandbolt<span className='text-red-500 animate-pulse'>_</span>
-          </animated.a>
+          <Link href='/'>
+            <animated.div
+              style={fadeInTitle}
+              className='text-neutral-300 text-3xl lg:text-6xl font-medium'
+            >
+              hammerandbolt<span className='text-red-500 animate-pulse'>_</span>
+            </animated.div>
+          </Link>
           <animated.button
             style={fadeInMenuItems}
             className='text-white text-xl'
@@ -211,13 +214,14 @@ export default function NavBar() {
       {/* Desktop Menu */}
       <div className='hidden lg:flex lg:flex-col lg:h-screen lg:items-start lg:justify-between sm:py-4'>
         <div>
-          <animated.a
-            style={fadeInTitle}
-            href='/'
-            className='text-neutral-300 text-4xl sm:text-6xl font-medium'
-          >
-            hammerandbolt<span className='text-red-500 animate-pulse'>_</span>
-          </animated.a>
+          <Link href='/'>
+            <animated.div
+              style={fadeInTitle}
+              className='text-neutral-300 text-4xl sm:text-6xl font-medium'
+            >
+              hammerandbolt<span className='text-red-500 animate-pulse'>_</span>
+            </animated.div>
+          </Link>
         </div>
         <animated.button
           style={fadeInMenuItems}

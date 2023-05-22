@@ -9,9 +9,9 @@ export default function page() {
       <div className='w-full lg:translate-y-1/4'>
         <p className='text-neutral-300 text-4xl md:text-5xl xl:text-6xl font-medium group mb-2'>
           we started out as a group of tech-heads, obsessed with the idea of
-          making the internet more beautiful and more functional. we didn't want
-          to create just another website - we wanted to craft digital
-          experiences.
+          making the internet more beautiful and more functional. we didn
+          <span>&#39;</span>t want to create just another website - we wanted to
+          craft digital experiences.
           <span className='text-red-500 animate-pulse'>_</span>
         </p>
         <br />
@@ -30,15 +30,19 @@ export default function page() {
         </p>
         <br />
         <p className='text-neutral-300 text-4xl md:text-5xl xl:text-6xl font-medium group mb-2'>
-          we don't just build websites, we build relationships. we work with you
-          every step of the way, making sure every detail is just right.
+          we don<span>&#39;</span>t just build websites, we build relationships.
+          we work with you every step of the way, making sure every detail is
+          just right.
           <span className='text-red-500 animate-pulse'>_</span>
         </p>
         <br />
         <p className='text-neutral-300 text-4xl md:text-5xl xl:text-6xl font-medium group mb-2'>
-          and don't just take our word for it. ask our clients. they'll tell you
-          about the difference we've made - the customers we've won, the sales
-          we've driven, the impressions we've made.
+          and don<span>&#39;</span>t just take our word for it. ask our clients.
+          they<span>&#39;</span>ll tell you about the difference we
+          <span>&#39;</span>ve made - the customers we<span>&#39;</span>ve won,
+          the sales we
+          <span>&#39;</span>ve driven, the impressions we<span>&#39;</span>ve
+          made.
           <span className='text-red-500 animate-pulse'>_</span>
         </p>
       </div>
