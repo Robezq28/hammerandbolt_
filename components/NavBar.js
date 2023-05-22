@@ -83,6 +83,8 @@ export default function NavBar() {
     "careers",
     "blog",
   ];
+  // Menu items for contact info
+  const contactItems = ["linkedin", "instagram", "email", "message", "phone"];
 
   // Animation trail for menu items
   const trail = useTrail(menuItems.length, {
@@ -90,8 +92,11 @@ export default function NavBar() {
     transform: isOpen ? "translate3d(0,0,0)" : "translate3d(5%,0,0)",
   });
 
-  // Menu items for contact info
-  const contactItems = ["linkedin", "instagram", "email", "message", "phone"];
+  // Animation trail for contactitems
+  const trailContact = useTrail(contactItems.length, {
+    opacity: isOpen ? 1 : 0,
+    transform: isOpen ? "translate3d(0,0,0)" : "translate3d(5%,0,0)",
+  });
 
   // Language items
   const languageItems = ["en", "es"];
@@ -109,6 +114,21 @@ export default function NavBar() {
           <span className='text-black group-hover:animate-pulse'>_</span>
         </animated.button>
       </Link>
+    ));
+
+  // This function generates menu items for mobile
+  const generateContactItems = (items, textSize) =>
+    trailContact.map((props, index) => (
+      <animated.button
+        key={items[index]}
+        href={`/${items[index]}`}
+        onClick={closeMenu}
+        style={props}
+        className={`text-neutral-300 ${textSize} font-medium group flex mb-2 sm:mb-0 sm:mr-4`}
+      >
+        {items[index]}
+        <span className='text-black group-hover:animate-pulse'>_</span>
+      </animated.button>
     ));
 
   // This function generates menu items for desktop
@@ -137,18 +157,18 @@ export default function NavBar() {
       </a>
     ));
 
-  // This function generates contact items
-  const generateContactItems = (items, textSize) =>
-    items.map((item) => (
-      <a
-        key={item}
-        href='/'
-        className={`text-neutral-300 ${textSize} font-medium group flex mb-2 sm:mb-0 sm:mr-4`}
-      >
-        {item}
-        <span className='text-black group-hover:animate-pulse'>_</span>
-      </a>
-    ));
+  // // This function generates contact items
+  // const generateContactItems = (items, textSize) =>
+  //   trailContact.items.map((item) => (
+  //     <a
+  //       key={item}
+  //       href='/'
+  //       className={`text-neutral-300 ${textSize} font-medium group flex mb-2 sm:mb-0 sm:mr-4`}
+  //     >
+  //       {item}
+  //       <span className='text-black group-hover:animate-pulse'>_</span>
+  //     </a>
+  //   ));
 
   // This function generates contact items
   const generateContactItemsDesktop = (items, textSize) =>
@@ -194,7 +214,7 @@ export default function NavBar() {
         <animated.nav
           ref={menuRef}
           style={menuAnimation}
-          className='fixed top-0 right-0 h-screen w-64 pl-4 bg-red-800 overflow-auto flex flex-col justify-between items-start'
+          className='fixed top-0 right-0 h-auto min-h-screen w-64 pl-4 bg-red-800 overflow-auto flex flex-col justify-between items-start'
         >
           <div>
             <button
@@ -232,10 +252,19 @@ export default function NavBar() {
             menu<span className='text-red-500 animate-pulse'>_</span>
           </span>
         </animated.button>
+
+        <div className='lg:absolute lg:bottom-0 lg:right-0 lg:pr-4 lg:pb-4'>
+          <LanguageButton />
+        </div>
+        {/* <div>
+          <animated.nav style={fadeInContactItems}>
+            {generateContactItemsDesktop(contactItems, "text-3xl")}
+          </animated.nav>
+        </div> */}
         <animated.nav
           ref={menuRef}
           style={menuAnimation}
-          className='fixed top-0 right-0 h-screen w-64 pl-4 bg-red-800 overflow-auto flex flex-col justify-between items-start'
+          className='fixed top-0 right-0 h-auto min-h-screen w-64 pl-4 bg-red-800 overflow-auto flex flex-col justify-between items-start'
         >
           <div>
             <button
@@ -248,21 +277,10 @@ export default function NavBar() {
             </button>
             {generateMenuItemsMobile(menuItems, "text-4xl")}
           </div>
+          <div className='mb-4'>
+            {generateContactItems(contactItems, "text-3xl")}
+          </div>
         </animated.nav>
-
-        {/* <div className='lg:absolute lg:top-0 lg:right-0 lg:pr-4 lg:pb-4 lg:py-4'>
-          <animated.nav style={fadeInMenuItems}>
-            {generateMenuItemsDesktop(menuItems, "text-3xl")}
-          </animated.nav>
-        </div> */}
-        <div className='lg:absolute lg:bottom-0 lg:right-0 lg:pr-4 lg:pb-4'>
-          <LanguageButton />
-        </div>
-        <div>
-          <animated.nav style={fadeInContactItems}>
-            {generateContactItemsDesktop(contactItems, "text-3xl")}
-          </animated.nav>
-        </div>
       </div>
     </div>
   );
