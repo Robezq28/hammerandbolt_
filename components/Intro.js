@@ -21,8 +21,11 @@ export default function Intro() {
             </p>
             <br />
             <p className='text-neutral-300 text-4xl md:text-5xl xl:text-6xl font-medium group mb-2'>
-              we turn boring, basic websites into electrifying digital
-              experiences
+              we turn boring, basic websites into{" "}
+              <span className='text-yellow-500 animate-bounce'>
+                electrifying
+              </span>{" "}
+              digital experiences
               <span className='text-red-500 animate-pulse'>_</span>
             </p>
             <br />

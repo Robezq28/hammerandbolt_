@@ -74,7 +74,6 @@ export default function NavBar() {
 
   // Menu items
   const menuItems = [
-    "home",
     "intro",
     "about",
     "expertise",
@@ -205,7 +204,7 @@ export default function NavBar() {
             </button>
             {generateMenuItemsMobile(menuItems, "text-2xl")}
           </div>
-          <div>{generateContactItems(contactItems, "text-1xl")}</div>
+          <div>{generateContactItems(contactItems, "text-2xl")}</div>
         </animated.nav>
       </div>
 
@@ -220,11 +219,38 @@ export default function NavBar() {
             hammerandbolt<span className='text-red-500 animate-pulse'>_</span>
           </animated.a>
         </div>
-        <div className='lg:absolute lg:top-0 lg:right-0 lg:pr-4 lg:pb-4 lg:py-4'>
+        <animated.button
+          style={fadeInMenuItems}
+          className='text-white text-xl'
+          onClick={() => setIsOpen(true)}
+        >
+          <span className='lg:absolute text-4xl mr-4 lg:top-0 lg:right-0 lg:pr-4 lg:pb-4 lg:py-4'>
+            menu<span className='text-red-500 animate-pulse'>_</span>
+          </span>
+        </animated.button>
+        <animated.nav
+          ref={menuRef}
+          style={menuAnimation}
+          className='fixed top-0 right-0 h-screen w-64 pl-4 bg-red-800 overflow-auto flex flex-col justify-between items-start'
+        >
+          <div>
+            <button
+              className='text-neutral-300 pt-4 pb-4 flex items-end justify-end'
+              onClick={closeMenu}
+            >
+              <span className='text-neutral-300 text-2xl lg:text-4xl font-medium'>
+                close<span className='text-black animate-pulse'>_</span>
+              </span>
+            </button>
+            {generateMenuItemsMobile(menuItems, "text-4xl")}
+          </div>
+        </animated.nav>
+
+        {/* <div className='lg:absolute lg:top-0 lg:right-0 lg:pr-4 lg:pb-4 lg:py-4'>
           <animated.nav style={fadeInMenuItems}>
             {generateMenuItemsDesktop(menuItems, "text-3xl")}
           </animated.nav>
-        </div>
+        </div> */}
         <div className='lg:absolute lg:bottom-0 lg:right-0 lg:pr-4 lg:pb-4'>
           <LanguageButton />
         </div>
