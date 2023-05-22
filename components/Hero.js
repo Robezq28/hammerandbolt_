@@ -8,15 +8,15 @@ export default function Hero() {
 
   const config = {
     angle: 45,
-    spread: 50,
+    spread: 70,
     startVelocity: 40,
-    elementCount: 70,
+    elementCount: 100,
     dragFriction: 0.12,
-    duration: 3000,
-    stagger: 3,
+    duration: 9000,
+    stagger: 0,
     width: "10px",
     height: "10px",
-    perspective: "500px",
+    perspective: "1000px",
     colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
   };
 

@@ -52,8 +52,8 @@ export default function About() {
             </p>
             <br />
             <p className='text-neutral-300 text-4xl md:text-5xl xl:text-6xl font-medium group mb-2'>
-              construimos sitios web que no solo son buenos para mirar - también
-              funcionan como un sueño.
+              construimos sitios web que no solo son actractivos - también
+              funcionan como en sueño.
               <span className='text-red-500 animate-pulse'>_</span>
             </p>
             <br />
