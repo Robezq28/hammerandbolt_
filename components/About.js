@@ -7,7 +7,7 @@ export default function About() {
   return (
     <>
       {language === "en" ? (
-        <div className='flex flex-col md:flex-row items-center justify-center h-screen mb-24'>
+        <div className='flex flex-col md:flex-row items-center justify-center h-screen'>
           <div className='w-full md:w-1/2 md:sticky top-1/2 transform -translate-y-1/2'>
             <h2 className='text-neutral-300 text-7xl md:text-8xl xl:text-9xl font-medium group mb-2'>
               about<span className='text-red-500 animate-pulse'>_</span>
