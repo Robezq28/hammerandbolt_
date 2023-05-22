@@ -16,11 +16,8 @@ export default function Intro() {
           </div>
           <div className='w-full md:w-2/3'>
             <p className='text-neutral-300 text-4xl md:text-5xl xl:text-6xl font-medium group mb-2'>
-              wanna step up your
-              <span className='underline decoration-red-500'>
-                {" "}
-                online game?
-              </span>{" "}
+              wanna step up your{" "}
+              <span className='underline decoration-red-500'>online game?</span>
             </p>
             <br />
             <p className='text-neutral-300 text-4xl md:text-5xl xl:text-6xl font-medium group mb-2'>
@@ -44,12 +41,9 @@ export default function Intro() {
           </div>
           <div className='w-full md:w-2/3'>
             <p className='text-neutral-300 text-4xl md:text-5xl xl:text-6xl font-medium group mb-2'>
-              quieres subir de nivel tu
-              <span className='underline decoration-red-500'>
-                {" "}
-                presencia
-              </span>{" "}
-              en línea?
+              quieres subir de nivel tu{" "}
+              <span className='underline decoration-red-500'>presencia</span> en
+              línea?
             </p>
             <br />
             <p className='text-neutral-300 text-4xl md:text-5xl xl:text-6xl font-medium group mb-2'>
