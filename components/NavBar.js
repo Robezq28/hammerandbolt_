@@ -157,19 +157,6 @@ export default function NavBar() {
       </a>
     ));
 
-  // // This function generates contact items
-  // const generateContactItems = (items, textSize) =>
-  //   trailContact.items.map((item) => (
-  //     <a
-  //       key={item}
-  //       href='/'
-  //       className={`text-neutral-300 ${textSize} font-medium group flex mb-2 sm:mb-0 sm:mr-4`}
-  //     >
-  //       {item}
-  //       <span className='text-black group-hover:animate-pulse'>_</span>
-  //     </a>
-  //   ));
-
   // This function generates contact items
   const generateContactItemsDesktop = (items, textSize) =>
     items.map((item) => (
@@ -184,7 +171,7 @@ export default function NavBar() {
     ));
 
   return (
-    <div className='fixed top-0 w-full' style={{ zIndex: 30000 }}>
+    <div className='fixed top-0 w-full'>
       {/* Mobile Menu */}
       <div className='flex justify-start items-center lg:hidden'>
         <div className='flex items-end justify-between w-full py-4 pr-8 bg-black'>
