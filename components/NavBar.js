@@ -171,10 +171,10 @@ export default function NavBar() {
     ));
 
   return (
-    <div className='fixed top-0 w-full'>
+    <div className='fixed top-0 w-full z-50'>
       {/* Mobile Menu */}
       <div className='flex justify-start items-center lg:hidden'>
-        <div className='flex items-end justify-between w-full py-4 pr-8 bg-black'>
+        <div className='flex items-end justify-between w-full py-4 pr-8 bg-black '>
           <Link href='/'>
             <animated.div
               style={fadeInTitle}

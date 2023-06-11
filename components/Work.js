@@ -13,7 +13,7 @@ const proyectItems = [
     name: "dcatalá",
     description:
       "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
-    image: "/images/honey-med.png",
+    image: "/images/dcatala.png",
     link: "https://dc-next-app.vercel.app/",
   },
 ];

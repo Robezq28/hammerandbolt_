@@ -3,6 +3,7 @@ import NavBar from "@/components/NavBar";
 import "./globals.css";
 import { Roboto } from "next/font/google";
 import LanguageContextProvider from "@/contexts/LanguageContextProvider";
+import SphereGeometry from "@/components/SphereGeometry";
 
 const roboto = Roboto({
   weight: ["100", "300", "400", "500", "700", "900"],

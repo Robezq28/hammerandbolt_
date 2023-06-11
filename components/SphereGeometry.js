@@ -34,7 +34,7 @@ const RotatingSphere = () => {
   );
 
   useFrame(() => {
-    sphereRef.current.rotation.y += 0.002; // Slower rotation
+    sphereRef.current.rotation.y += 0.0009; // Slower rotation
   });
 
   return (
@@ -54,7 +54,7 @@ const RotatingSphere = () => {
 const SphereGeometry = () => {
   return (
     <Canvas>
-      <PerspectiveCamera makeDefault position={[0, 0, 7]} />
+      <PerspectiveCamera makeDefault position={[0, 0, 3]} />
       <ambientLight intensity={0.7} color='yellow' />
       <spotLight
         position={[10, 10, 10]}
@@ -64,17 +64,24 @@ const SphereGeometry = () => {
         intensity={0.5}
       />
       <pointLight position={[-10, -10, -10]} color='red' intensity={0.5} />
-      {/* <Html position={[0, 0, -2]} center>
-        <div className='flex flex-col items-center justify-center'>
-          <h2 className='text-neutral-100 text-6xl sm:text-9xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'>
-            ELEVATE<span className='text-red-500 animate-pulse'>_</span>
-          </h2>
-          <h2 className='text-neutral-100 text-5xl sm:text-8xl font-medium group flex mb-2 sm:mb-0 sm:mr-4'>
-            design<span className='text-red-500 animate-pulse'>_</span>
-          </h2>
-        </div>
-      </Html> */}
       <RotatingSphere />
+      <Html position={[0, 0, 0]} center>
+          <div>
+            <h2 className='text-neutral-300 text-6xl md:text-8xl xl:text-9xl font-medium mb-2'>
+              From coffee
+            </h2>
+            <h2 className='text-neutral-300 text-6xl md:text-8xl xl:text-9xl font-medium mb-2'>
+              sips
+              <span className='text-red-500'>...</span>
+            </h2>
+            <h2 className='text-neutral-300 text-6xl md:text-8xl xl:text-9xl font-medium mb-2 sm:mb-0 sm:mr-4'>
+              to website
+            </h2>
+            <h2 className='text-neutral-300 text-6xl md:text-8xl xl:text-9xl font-medium mb-2 sm:mb-0 sm:mr-4'>
+              hits<span className='text-red-500 animate-pulse'>_</span>
+            </h2>
+          </div>
+s      </Html>
     </Canvas>
   );
 };

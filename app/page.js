@@ -10,6 +10,7 @@ export default function Home() {
   return (
     <>
       <div className='h-screen'>
+        <SphereGeometry />
         <Hero />
         <Intro />
         <About />
