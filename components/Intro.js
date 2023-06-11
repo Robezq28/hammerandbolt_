@@ -16,22 +16,18 @@ export default function Intro() {
           </div>
           <div className='w-full md:w-2/3'>
             <p className='text-neutral-300 text-4xl md:text-5xl xl:text-6xl font-medium group mb-2'>
-              wanna step up your{" "}
-              <span className='underline decoration-red-500'>online game?</span>
+              We are not just web designers;{" "}
+              <span className='underline decoration-red-500'>
+                we are web developers.
+              </span>
             </p>
             <br />
             <p className='text-neutral-300 text-4xl md:text-5xl xl:text-6xl font-medium group mb-2'>
-              we turn boring, basic websites into{" "}
-              <span className='text-yellow-500 animate-bounce'>
-                electrifying
-              </span>{" "}
-              digital experiences
+              Whats the difference? A designer{" "}
+              <span className='text-pink-400'>decorates</span> the house; a
+              developer <span className='text-pink-500'>builds it</span> from
+              the ground up. We do both—with style 🤘.
               <span className='text-red-500 animate-pulse'>_</span>
-            </p>
-            <br />
-            <p className='text-neutral-300 text-4xl md:text-5xl xl:text-6xl font-medium group mb-2'>
-              say bye bye 👋 to slow load times and hello to lightning-fast
-              browsing <span className='text-red-500 animate-pulse'>_</span>
             </p>
           </div>
         </div>
