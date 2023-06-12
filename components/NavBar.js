@@ -171,10 +171,10 @@ export default function NavBar() {
     ));
 
   return (
-    <div className='fixed top-0 w-full z-50'>
+    <div className='fixed top-0 w-full z-50 bg-black backdrop-filter backdrop-blur-md bg-opacity-50'>
       {/* Mobile Menu */}
-      <div className='flex justify-start items-center lg:hidden'>
-        <div className='flex items-end justify-between w-full py-4 pr-8 bg-black '>
+      <div className='flex justify-start items-center lg:hidden '>
+        <div className='flex items-end justify-between w-full py-4 px-4'>
           <Link href='/'>
             <animated.div
               style={fadeInTitle}
@@ -192,16 +192,16 @@ export default function NavBar() {
               menu<span className='text-red-500 animate-pulse'>_</span>
             </span>
           </animated.button>
-          <div className='fixed bottom-0 right-0 m-4'>
+          {/* <div className='fixed bottom-0 right-0 m-4'>
             <LanguageButton />
-          </div>
+          </div> */}
         </div>
 
         {/* Slide-out menu */}
         <animated.nav
           ref={menuRef}
           style={menuAnimation}
-          className='fixed top-0 right-0 h-auto min-h-screen w-64 pl-4 bg-red-800 overflow-auto flex flex-col justify-between items-start'
+          className='fixed top-0 right-0 h-auto min-h-screen w-64 pl-4 bg-red-700 overflow-auto flex flex-col justify-between items-start'
         >
           <div>
             <button
@@ -219,7 +219,7 @@ export default function NavBar() {
       </div>
 
       {/* Desktop Menu */}
-      <div className='hidden lg:flex lg:flex-col lg:h-screen lg:items-start lg:justify-between sm:py-4'>
+      <div className='hidden lg:flex lg:flex-col lg:h-auto lg:items-start lg:justify-between sm:py-4 sm:px-4 bg-black backdrop-filter backdrop-blur-md bg-opacity-50 '>
         <div>
           <Link href='/'>
             <animated.div
@@ -240,9 +240,9 @@ export default function NavBar() {
           </span>
         </animated.button>
 
-        <div className='lg:absolute lg:bottom-0 lg:right-0 lg:pr-4 lg:pb-4'>
+        {/* <div className='lg:absolute lg:bottom-0 lg:right-0 lg:pr-4 lg:pb-4'>
           <LanguageButton />
-        </div>
+        </div> */}
         {/* <div>
           <animated.nav style={fadeInContactItems}>
             {generateContactItemsDesktop(contactItems, "text-3xl")}
