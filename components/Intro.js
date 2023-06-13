@@ -26,9 +26,8 @@ export default function Intro() {
             <p className='text-neutral-300 text-4xl md:text-5xl xl:text-6xl font-medium group mb-2'>
               Whats the difference? A{" "}
               <span className='text-pink-500'>designer decorates</span> the
-              house; a{" "}
-              <span className='text-blue-600'>developer builds it</span> from
-              the ground up.
+              house; a <span className='text-blue-600'>developer builds</span>{" "}
+              it from the ground up.
             </p>
             <br />
             <p className='text-neutral-300 text-4xl md:text-5xl xl:text-6xl font-medium group mb-2'>
